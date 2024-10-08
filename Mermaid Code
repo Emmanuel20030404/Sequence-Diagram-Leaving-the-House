@@ -1,0 +1,32 @@
+sequenceDiagram
+    participant Homeowner
+    participant VoiceAssistant
+    participant SmartHomeApp
+    participant LightControlSystem
+    participant ThermostatSystem
+    participant SecuritySystem
+    participant DoorLockSystem
+    participant SurveillanceCameraSystem
+    participant ApplianceControlSystem
+
+    Homeowner->>VoiceAssistant: Activate "Leaving Home" mode
+    VoiceAssistant->>LightControlSystem: Turn off the lights
+    VoiceAssistant->>ThermostatSystem: Switch to energy-saving mode
+
+    LightControlSystem-->>VoiceAssistant: Confirmation: Lights off
+    ThermostatSystem-->>VoiceAssistant: Confirmation: Thermostat set to energy-saving mode
+
+    VoiceAssistant->>SecuritySystem: Activate security mode
+    SecuritySystem->>DoorLockSystem: Lock all the doors
+    SecuritySystem->>SurveillanceCameraSystem: Activate surveillance cameras
+
+    DoorLockSystem-->>SecuritySystem: Confirmation: All doors locked
+    SurveillanceCameraSystem-->>SecuritySystem: Confirmation: Cameras activated
+
+    SecuritySystem-->>VoiceAssistant: Security system activated
+
+    VoiceAssistant->>ApplianceControlSystem: Turn off non-essential appliances
+    ApplianceControlSystem-->>VoiceAssistant: Confirmation: Appliances shut down
+
+    VoiceAssistant->>SmartHomeApp: Send confirmation to homeowner
+    SmartHomeApp-->>Homeowner: House is secure
